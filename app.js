@@ -45,7 +45,6 @@ function startStopwatch(){
     captureIDs();
     // start the timer if it did NOT start before:
     if (timerId[0] === null){
-        console.log("Start btn is clicked!!!");         // console debugging ...
         // set interval for each timer value (milliseconds, seconds, minutes, hours):
         for (let i=0; i<timerId.length; i++){
             timerId[i] = setInterval(updateTime, timeInterval[i], elementId[i], upperLimit[i]);
@@ -54,16 +53,21 @@ function startStopwatch(){
 }
 
 function stopStopwatch(){
-    console.log("Stop btn is clicked!!!");
+    // stop the timer if it did start before:
+    if (timerId[0] !== null){
+        // clear interval for each timer value (milliseconds, seconds, minutes, hours):
+        for (let i=0; i<timerId.length; i++){
+            clearInterval(timerId[i]);
+            timerId[i] = null;
+        }
+    }
 }
 
 function resetStopwatch(){
-    if (timerId[0] !== null){
-        console.log("Reset btn is clicked!!!");
-        for (let i=0; i<timerId.length; i++){
-            clearInterval(timerId[i]);
-            resetTime(elementId[i]);
-            timerId[i] = null;
-        }
+    // clear interval for each timer value (milliseconds, seconds, minutes, hours):
+    for (let i=0; i<timerId.length; i++){
+        clearInterval(timerId[i]);
+        resetTime(elementId[i]);            // reset each timer's value to be (00)
+        timerId[i] = null;
     }
 }
