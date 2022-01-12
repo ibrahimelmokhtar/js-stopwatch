@@ -23,6 +23,10 @@ function updateTime(elementId, upperLimit){
     document.querySelector(elementId).textContent = timeUnit;
 }
 
+function resetTime(elementId){
+    document.querySelector(elementId).textContent = "00";
+}
+
 function captureIDs(){
     // get the elements of first container class, which contains the timers' values:
     let childElements = document.querySelector(".container").children;
@@ -54,5 +58,12 @@ function stopStopwatch(){
 }
 
 function resetStopwatch(){
-    console.log("Reset btn is clicked!!!");
+    if (timerId[0] !== null){
+        console.log("Reset btn is clicked!!!");
+        for (let i=0; i<timerId.length; i++){
+            clearInterval(timerId[i]);
+            resetTime(elementId[i]);
+            timerId[i] = null;
+        }
+    }
 }
