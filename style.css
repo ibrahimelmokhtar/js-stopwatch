@@ -8,7 +8,7 @@
 
 
 h1, h2{
-    margin: 40px 0px;
+    margin: 20px 0px;
     font-weight: 100;
     text-transform: uppercase;
     font-size: xx-large;
@@ -24,7 +24,7 @@ h1, h2{
 }
 
 .container{
-    padding: 50px;
+    padding: 20px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -49,9 +49,23 @@ button{
     text-transform: capitalize;
 }
 
+#lap-btn{
+    border: 8px double #ffffff;
+}
+
 button:hover{
     cursor: pointer;
     color: #000000;
     border-color: #ffffff;
     background-color: #ffffff;
+}
+
+p{
+    border: 2px solid #ffffff;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin: 3px;
+    font-size: x-large;
 }

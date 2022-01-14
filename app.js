@@ -2,8 +2,8 @@
 
 let timerId = [null, null, null, null];                 // used to capture each setInterval() returned id
 let elementId = [];                                     // used to capture each timer's id
-let timeInterval = [1, 1000, 1000*60, 1000*60*60];      // used to set each timer's time interval
-let upperLimit = [60, 60, 60, 24];                      // used to set each timer's upper limit
+let timeInterval = [10, 1000, 1000*60, 1000*60*60];      // used to set each timer's time interval
+let upperLimit = [100, 60, 60, 24];                      // used to set each timer's upper limit
 
 
 function updateTime(elementId, upperLimit){
@@ -41,8 +41,6 @@ function captureIDs(){
 }
 
 function startStopwatch(){
-    // capture each timer's id:
-    captureIDs();
     // start the timer if it did NOT start before:
     if (timerId[0] === null){
         // set interval for each timer value (milliseconds, seconds, minutes, hours):
@@ -64,6 +62,13 @@ function stopStopwatch(){
 }
 
 function resetStopwatch(){
+    // get captured laps:
+    let captureArea = document.querySelector("#captured-laps");
+    // remove each displayed element in a specific area:
+    while(captureArea.children.length !== 0){
+        captureArea.children[0].remove();
+    }
+
     // clear interval for each timer value (milliseconds, seconds, minutes, hours):
     for (let i=0; i<timerId.length; i++){
         clearInterval(timerId[i]);
@@ -71,3 +76,27 @@ function resetStopwatch(){
         timerId[i] = null;
     }
 }
+
+function captureLap(){
+    // get captured laps:
+    let captureArea = document.querySelector("#captured-laps");
+    // create new (p) element:
+    let newCapture = document.createElement('p');
+    // initial text to be displayed:
+    let displayedText = "";
+    // modify the displayed test with the actual captured time:
+    for (let i=elementId.length-1; i>=0; i--){
+        displayedText += document.querySelector(elementId[i]).textContent;
+        if (i !== 0){
+            displayedText += " : ";
+        }
+    }
+    // add the final constructed text to be displayed:
+    newCapture.textContent = displayedText;
+    // add the created element to the DOM:
+    captureArea.appendChild(newCapture);
+}
+
+// main entry:
+// capture each timer's id:
+captureIDs();
