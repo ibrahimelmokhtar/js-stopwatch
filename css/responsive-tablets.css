@@ -1,0 +1,28 @@
+
+/* Tablet devices */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+    * {
+        background-color: bisque;
+    }
+
+
+    .container {
+        justify-content: space-around;
+    }
+
+
+    .container:first-of-type span {
+        padding: 10px 40px;
+    }
+
+
+    button {
+        padding: 10px 20px;
+        margin: 0;
+    }
+
+    #lap-btn{
+        padding: 10px 40px;
+    }
+}
